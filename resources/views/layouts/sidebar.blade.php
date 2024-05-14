@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon ">
-            <img src="{{ asset('assets/img/suratmasuj.png') }}" width="50px" alt="">
+            <img src="{{ asset('assets/img/goseki.jpeg') }}" width="80px" alt="">
 
         </div>
         <div class="sidebar-brand-text mx-3">{{ Auth::user()->user_role }} <sup></sup></div>
@@ -22,13 +22,28 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
         <div class="sidebar-heading">
-            Index Surat
+            Sub Menu
         </div>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('index-surat') }}">
+            <a class="nav-link" href="{{ route('mesin') }}">
                 <i class="fas fa-fw fa-table"></i>
-                <span>List Index Surat</span></a>
+                <span>Mesin Produksi</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('operator') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Operator</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('produk') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Produk</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('proses') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Proses</span></a>
         </li>
     @endif
 
@@ -36,18 +51,23 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Data Surat
+        Data Entri Produksi
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('surat-masuk') }}">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-table"></i>
-            <span>Surat Masuk</span></a>
+            <span>Jadwal Produksi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('surat-keluar') }}">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-table"></i>
-            <span>Surat Keluar</span></a>
+            <span>Form Hasil Produksi</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Form Problem Produksi</span></a>
     </li>
 
     <!-- Divider -->
@@ -59,7 +79,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{route('laporan')}}">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-table"></i>
             <span>Laporan</span></a>
     </li>
