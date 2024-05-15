@@ -3,16 +3,12 @@
 @section('content')
     <div class="container">
         <div class="wrapper">
-            <div class="logo">
-                <img src="{{ asset('assets/img/suratmasuj.png') }}" alt="">
+            <div class="text-center bg-white py-4" style="border-radius: 1rem">
+                <img src="{{ asset('assets/img/goseki.jpeg') }}" class="img-fluid" alt="">
             </div>
             <div class="text-center mt-4 name">
                 Login
             </div>
-            <p class="text-center mt-2">
-                Program Surat Masuk & Keluar
-
-            </p>
             <form method="POST" action="{{ route('login') }}" class="p-3 mt-3">
                 @csrf
                 <div class="form-field align-items-center">
