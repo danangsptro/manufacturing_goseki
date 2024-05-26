@@ -15,12 +15,13 @@ class CreateHasilProduksisTable extends Migration
     {
         Schema::create('hasil_produksis', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal_produksi')->nullable();
             $table->bigInteger('mesin_produksi_id')->nullable()->unsigned();
             $table->bigInteger('operator_id')->nullable()->unsigned();
             $table->bigInteger('produk_id')->nullable()->unsigned();
             $table->bigInteger('proses_id')->nullable()->unsigned();
             $table->bigInteger('user_id')->nullable()->unsigned();
-            $table->string('part',5)->nullable();
+            $table->string('part')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
             $table->timestamps();

@@ -1,26 +1,26 @@
 @extends('masterBackend')
-@section('title', 'Index Mesin')
+@section('title', 'Create Jadwal Produksi')
 
 @section('backend')
     <div class="container-fluid">
         <div class="container card-content">
             <br>
             <br>
-            <h4 class="text-center mb-4">Create Mesin</h4>
+            <h4 class="text-center mb-4">Create Jadwal Produksi</h4>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Create Mesin</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Create Jadwal Produksi</h6>
                 </div>
                 <div class="container-fluid mt-4 mb-4">
-                    <form method="POST" action="{{route('store-mesin')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('store-jadwal-produksi') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Nama Mesin</label>
-                                    <input type="text" class="form-control" placeholder="Example: 150 T. Amada"
-                                        name="nama_mesin" required>
-                                    @error('nama_mesin')
+                                    <label>Jadwal Produksi</label>
+                                    <input type="file" class="form-control" name="jadwal_produksi" required>
+                                    <i class="text-danger" style="font-size: 13px">* jpeg,png,jpg, max = 2mb</i>
+                                    @error('jadwal_produksi')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -34,7 +34,7 @@
                                         onclick="return confirm('Data yang di masukan sudah benar ?')">Submit</button>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="{{ route('mesin') }}" type="submit"
+                                    <a href="{{ route('jadwal-produksi') }}" type="submit"
                                         class="btn btn-dark btn-block">Back</a>
 
                                 </div>

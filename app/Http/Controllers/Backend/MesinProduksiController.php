@@ -5,18 +5,29 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\mesin_produksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MesinProduksiController extends Controller
 {
     public function index()
     {
         $data = mesin_produksi::all();
-        return view('page.mesin.index', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.mesin.index', compact('data'));
+        }
     }
 
     public function create()
     {
-        return view('page.mesin.create');
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.mesin.create');
+        }
     }
 
     public function store(Request $request)
@@ -41,7 +52,12 @@ class MesinProduksiController extends Controller
     public function edit($id)
     {
         $data = mesin_produksi::find($id);
-        return view('page.mesin.edit', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.mesin.edit', compact('data'));
+        }
     }
 
     public function update(Request $request, $id)

@@ -1,8 +1,13 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\HasilProduksiController;
+use App\Http\Controllers\Backend\JadwalProduksiController;
+use App\Http\Controllers\Backend\JamProduksiController;
+use App\Http\Controllers\Backend\LaporanController;
 use App\Http\Controllers\Backend\MesinProduksiController;
 use App\Http\Controllers\Backend\OperatorController;
+use App\Http\Controllers\Backend\ProblemProduksiController;
 use App\Http\Controllers\Backend\ProdukController;
 use App\Http\Controllers\Backend\ProsesController;
 use App\Http\Controllers\Backend\RegisterUserController;
@@ -58,5 +63,28 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit-proses/{id}', [ProsesController::class, 'edit'])->name('edit-proses');
         Route::put('/update-proses/{id}', [ProsesController::class, 'update'])->name('update-proses');
         Route::delete('/delete-proses/{id}', [ProsesController::class, 'delete'])->name('delete-proses');
+        // Hasil Produksi
+        Route::get('/hasil-produksi', [HasilProduksiController::class, 'index'])->name('hasil-produksi');
+        Route::get('/create-hasil-produksi', [HasilProduksiController::class, 'create'])->name('create-hasil-produksi');
+        Route::post('/store-hasil-produksi', [HasilProduksiController::class, 'store'])->name('store-hasil-produksi');
+        Route::get('/edit-hasil-produksi/{id}', [HasilProduksiController::class, 'edit'])->name('edit-hasil-produksi');
+        Route::put('/update-hasil-produksi/{id}', [HasilProduksiController::class, 'update'])->name('update-hasil-produksi');
+        Route::delete('/delete-hasil-produksi/{id}', [HasilProduksiController::class, 'delete'])->name('delete-hasil-produksi');
+        // Problem Produksi
+        Route::get('/problem-produksi', [ProblemProduksiController::class, 'index'])->name('problem-produksi');
+        Route::get('/create-problem-produksi', [ProblemProduksiController::class, 'create'])->name('create-problem-produksi');
+        Route::post('/store-problem-produksi', [ProblemProduksiController::class, 'store'])->name('store-problem-produksi');
+        Route::get('/edit-problem-produksi/{id}', [ProblemProduksiController::class, 'edit'])->name('edit-problem-produksi');
+        Route::put('/update-problem-produksi/{id}', [ProblemProduksiController::class, 'update'])->name('update-problem-produksi');
+        Route::delete('/delete-problem-produksi/{id}', [ProblemProduksiController::class, 'delete'])->name('delete-problem-produksi');
+        // Jam Produksi
+        Route::get('/jadwal-produksi', [JadwalProduksiController::class, 'index'])->name('jadwal-produksi');
+        Route::get('/create-jadwal-produksi', [JadwalProduksiController::class, 'create'])->name('create-jadwal-produksi');
+        Route::post('/store-jadwal-produksi', [JadwalProduksiController::class, 'store'])->name('store-jadwal-produksi');
+        Route::get('/edit-jadwal-produksi/{id}', [JadwalProduksiController::class, 'edit'])->name('edit-jadwal-produksi');
+        Route::put('/update-jadwal-produksi/{id}', [JadwalProduksiController::class, 'update'])->name('update-jadwal-produksi');
+        Route::delete('/delete-jadwal-produksi/{id}', [JadwalProduksiController::class, 'destroy'])->name('delete-jadwal-produksi');
+        // Laporan
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
     });
 });

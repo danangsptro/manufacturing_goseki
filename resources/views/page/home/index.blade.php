@@ -29,7 +29,7 @@
         <div class="card border-left-dark shadow h-100 py-5">
             <div class="row">
                 <div class="col-lg-4 text-center">
-                    <img src="{{ asset('assets/img/goseki.jpeg') }}" width="50%"
+                    <img src="{{ asset('assets/img/goseki.jpeg') }}" class="img-fluid"
                         alt="" style="margin-top: 3rem">
                 </div>
                 <div class="col-lg-8">
@@ -65,14 +65,14 @@
                         </div>
                     </div>
                     <br>
-                    <h1 class="display-4 text-gray-800">Hallo,
+                    <h1 class="display-5 text-gray-800 py-3">Hallo,
                         <strong>
                             {{ Auth::user()->name }}
 
                         </strong>
                     </h1>
                     <hr>
-                    <p class="lead text-dark">Selamat datang di <span class="text-primary"><strong>Sistem Data Entri Hasil Produksi</strong></span></p>
+                    <p class="lead text-dark">Selamat datang di <span class="text-primary"><strong>Sistem Data Entry Hasil Produksi</strong></span></p>
                 </div>
             </div>
 
@@ -160,8 +160,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Data Surat Masuk</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                    Jumlah Data Hasil Produksi</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$hasilProduksi->count()}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -176,8 +176,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Data Surat Keluar</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                    Jumlah Data Problem Produksi</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{$problemProduksi->count()}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-file fa-2x text-gray-300"></i>

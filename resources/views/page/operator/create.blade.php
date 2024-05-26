@@ -1,5 +1,5 @@
 @extends('masterBackend')
-@section('title', 'Index Surat')
+@section('title', 'Index Operator')
 
 @section('backend')
     <div class="container-fluid">
@@ -9,7 +9,7 @@
             <h4 class="text-center mb-4">Create Operator</h4>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Create Mesin</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Create Operator</h6>
                 </div>
                 <div class="container-fluid mt-4 mb-4">
                     <form method="POST" action="{{route('store-operator')}}" enctype="multipart/form-data">
@@ -17,7 +17,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Nama Mesin</label>
+                                    <label>Nama Operator</label>
                                     <input type="text" class="form-control" placeholder="Example: Jhon"
                                         name="nama_operator" required>
                                     @error('nama_operator')

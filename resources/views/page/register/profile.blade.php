@@ -28,7 +28,7 @@
                                 <img width="130" src="{{ asset('assets/img/undraw_posting_photo.svg') }}">
                                 <div class="mt-3">
                                     <h4 class="text-black font-weight-bold"></h4>
-                                    <p>SISTEM SURAT MASUK & KELUAR</p>
+                                    <p>SISTEM DATA ENTRY HASIL PRODUKSI</p>
                                     <p><span class="font-weight-bold">{{ Auth::user()->name }}</span></p>
                                 </div>
                                 <hr>
@@ -109,21 +109,15 @@
                                 @if (Auth::user()->user_role === 'Admin')
                                     <div class="mt-2">
                                         <label class="form-label font-weight-bold">User Role</label><br>
-                                        <input type="radio" {{ $data->user_role == 'Admin' ? 'checked' : '' }}
-                                            name="user_role" value="Admin">
-                                        <label for="customRadioInline1">Admin</label>
-
-                                        <input type="radio" {{ $data->user_role == 'Pegawai' ? 'checked' : '' }}
-                                            name="user_role" value="Pegawai">
-                                        <label for="customRadioInline1">Pegawai</label>
+                                        <input class="form-control" value="{{$data->user_role}}" disabled>
                                     </div>
                                 @endif
 
                                 <div class="mt-3">
                                     <button type="submit" class="btn btn-dark btn-sm"><i
                                             class="fa fa-redo mr-2"></i>Perbarui Akun</button>
-                                    <a href="{{ route('dashboard') }}" type="submit"
-                                        class="btn btn-outline-danger btn-sm"><i class="fa fa-redo mr-2"></i>Back</a>
+                                    {{-- <a href="{{ route('profile') }}" type="submit"
+                                        class="btn btn-outline-danger btn-sm"><i class="fa fa-redo mr-2"></i>Back</a> --}}
                                 </div>
                             </form>
                         </div>

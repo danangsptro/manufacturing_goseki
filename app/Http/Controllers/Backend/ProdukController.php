@@ -5,18 +5,29 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
     public function index()
     {
         $data = produk::all();
-        return view('page.produk.index', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.produk.index', compact('data'));
+        }
     }
 
     public function create()
     {
-        return view('page.produk.create');
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.produk.create');
+        }
     }
 
     public function store(Request $request)
@@ -41,7 +52,12 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $data = produk::find($id);
-        return view('page.produk.edit', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.produk.edit', compact('data'));
+        }
     }
 
     public function update(Request $request, $id)

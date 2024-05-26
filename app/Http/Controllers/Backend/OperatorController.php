@@ -5,18 +5,29 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\operator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OperatorController extends Controller
 {
     public function index()
     {
         $data = operator::all();
-        return view('page.operator.index', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.operator.index', compact('data'));
+        }
     }
 
     public function create()
     {
-        return view('page.operator.create');
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.operator.create');
+        }
     }
 
     public function store(Request $request)
@@ -41,7 +52,12 @@ class OperatorController extends Controller
     public function edit($id)
     {
         $data = operator::find($id);
-        return view('page.operator.edit', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.operator.edit', compact('data'));
+        }
     }
 
     public function update(Request $request, $id)

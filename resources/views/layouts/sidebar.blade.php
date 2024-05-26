@@ -55,20 +55,23 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('jadwal-produksi') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Jadwal Produksi</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Form Hasil Produksi</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Form Problem Produksi</span></a>
-    </li>
+
+    @if (Auth::user()->user_role !== 'Manager')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('hasil-produksi') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Form Hasil Produksi</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('problem-produksi') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Form Problem Produksi</span></a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
@@ -79,7 +82,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('laporan')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Laporan</span></a>
     </li>

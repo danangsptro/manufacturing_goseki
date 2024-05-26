@@ -6,18 +6,29 @@ use App\Http\Controllers\Controller;
 use App\produk;
 use App\proses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProsesController extends Controller
 {
     public function index()
     {
         $data = proses::all();
-        return view('page.proses.index', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.proses.index', compact('data'));
+        }
     }
 
     public function create()
     {
-        return view('page.proses.create');
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.proses.create');
+        }
     }
 
     public function store(Request $request)
@@ -42,7 +53,12 @@ class ProsesController extends Controller
     public function edit($id)
     {
         $data = proses::find($id);
-        return view('page.proses.edit', compact('data'));
+        if (Auth::user()->user_role === 'Manager') {
+            toastr("Access denied", 'error');
+            return redirect()->route('dashboard');
+        } else {
+            return view('page.proses.edit', compact('data'));
+        }
     }
 
     public function update(Request $request, $id)

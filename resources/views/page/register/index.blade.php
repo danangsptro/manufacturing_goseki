@@ -76,7 +76,8 @@
                                                 <select class="custom-select" id="inputGroupSelect01" name="user_role">
                                                     <option selected>Pilih Option</option>
                                                     <option value="Admin">Admin</option>
-                                                    <option value="Pegawai">Pegawai</option>
+                                                    <option value="Manager">Manager</option>
+                                                    <option value="Leader">Leader</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-6">
@@ -105,7 +106,7 @@
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="col-form-label">Password:</label>
                                                     <input type="text" class="form-control" id="recipient-name"
-                                                        name="password" required>
+                                                        name="password" value="qwerty" required disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,7 +150,15 @@
                                     <td>{{ $d->email }}</td>
                                     <td>{{ $d->username }}</td>
                                     <td>{{ $d->jenis_kelamin }}</td>
-                                    <td>{{ $d->user_role }}</td>
+                                    <td>
+                                        @if ($d->user_role === 'Admin')
+                                            <span class="badge badge-pill badge-light">{{ $d->user_role }}</span>
+                                        @elseif($d->user_role === 'Manager')
+                                            <span class="badge badge-pill badge-secondary">{{ $d->user_role }}</span>
+                                        @elseif($d->user_role === 'Leader')
+                                            <span class="badge badge-pill badge-info">{{ $d->user_role }}</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $d->no_telepon }}</td>
                                     <td>{{ $d->tanggal_lahir }}</td>
                                     <td>{{ $d->tempat_lahir }}</td>
@@ -163,7 +172,7 @@
                                             <button class="btn btn-danger btn-sm"
                                                 onclick="return confirm('ANDA YAKIN INGIN MENGHAPUS ?')"
                                                 style="border-radius: 5rem"><i class="menu-icon fa fa-trash"></i>
-                                                </button>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>

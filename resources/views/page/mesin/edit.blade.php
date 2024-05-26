@@ -1,5 +1,5 @@
 @extends('masterBackend')
-@section('title', 'Edit Index Surat')
+@section('title', 'Edit Index Mesin')
 
 @section('backend')
     <div class="container-fluid">
