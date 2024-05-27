@@ -16,7 +16,11 @@ class CreateOperatorsTable extends Migration
         Schema::create('operators', function (Blueprint $table) {
             $table->id();
             $table->string('nama_operator', 30);
+            $table->bigInteger('user_id')->nullable()->unsigned();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

@@ -17,5 +17,10 @@ class operator extends Model
     {
         return $this->hasMany(hasil_produksi::class, 'operator_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
     
 }

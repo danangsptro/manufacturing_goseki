@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(hasil_produksi::class, 'user_id', 'id');
     }
+
+    public function operator()
+    {
+        return $this->hasMany(operator::class, 'user_id', 'id');
+    }
 }

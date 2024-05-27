@@ -73,7 +73,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-label">Part</label><br>
 
@@ -82,6 +82,12 @@
                                     <span> | </span>
                                     <input type="radio" name="part" value="ng">
                                     <label for="customRadioInline1"> NG (PCS)</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label">Part Qty</label><br>
+                                    <input type="number" placeholder="Example: 1" class="form-control" name="qty_part">
                                 </div>
                             </div>
                             <div class="col-lg-6">

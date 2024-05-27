@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\operator;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,22 +23,26 @@ class OperatorController extends Controller
 
     public function create()
     {
+        $user = User::where('user_role', 'Leader')->get();
         if (Auth::user()->user_role === 'Manager') {
             toastr("Access denied", 'error');
             return redirect()->route('dashboard');
         } else {
-            return view('page.operator.create');
+            return view('page.operator.create', compact('user'));
         }
     }
 
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nama_operator' => 'required|min:5'
+            'nama_operator' => 'required|min:5',
+            'user_id' => 'required|integer|min:1'
         ]);
 
         $data = new operator();
+
         $data->nama_operator = $validate['nama_operator'];
+        $data->user_id = $validate['user_id'];
         $data->save();
 
         if ($data) {

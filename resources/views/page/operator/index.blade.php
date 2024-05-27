@@ -24,6 +24,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Operator</th>
+                                    <th>Leader</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -32,6 +33,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $d->nama_operator }}</td>
+                                        <td>{{ $d->user->name }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('edit-operator', $d->id) }}" class="btn btn-warning btn-sm"
                                                 style="border-radius: 5rem"><i class="menu-icon fa fa-edit"></i> </a>

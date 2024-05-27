@@ -84,7 +84,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-label">Part</label><br>
 
@@ -96,6 +96,11 @@
                                         {{ $data->part == 'ng' ? 'checked' : '' }}>
                                     <label for="customRadioInline1"> NG (PCS)</label>
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Part QTY</label>
+                                <input type="number" placeholder="Example: 1" value="{{ $data->qty_part }}"
+                                    name="qty_part" class="form-control" required>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">

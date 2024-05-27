@@ -29,6 +29,7 @@
                                     <th>Nama Produk</th>
                                     <th>Proses</th>
                                     <th>Part</th>
+                                    <th>Part Qty</th>
                                     <th>Waktu</th>
                                     <th>Author</th>
                                     <th class="text-center">Action</th>
@@ -44,6 +45,7 @@
                                         <td>{{ $d->produk->nama_produk }}</td>
                                         <td>{{ $d->proses->nama_proses }}</td>
                                         <td>{{ $d->part }}</td>
+                                        <td>{{ $d->qty_part }}</td>
                                         <td>{{ $d->start_time }} - {{ $d->end_time }}</td>
                                         <td>
                                             @if ($d->user->user_role === 'Admin')

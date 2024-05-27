@@ -32,9 +32,13 @@ class HasilProduksiController extends Controller
 
     public function create()
     {
+        $userId = Auth::user()->id;
+
+        if ($userId === 1) $operator = operator::all();
+        else $operator = operator::where('user_id', $userId)->get();
+
         $mesin = mesin_produksi::all();
         $produk = produk::all();
-        $operator = operator::all();
         $proses = proses::all();
 
         return view('page.hasilProduksi.create', compact('mesin', 'produk', 'operator', 'proses'));
@@ -49,6 +53,7 @@ class HasilProduksiController extends Controller
             'produk_id' => 'required',
             'proses_id' => 'required',
             'part' => 'required',
+            'qty_part' => 'required',
             'start_time' => 'required',
             'end_time' => 'required'
         ]);
@@ -62,6 +67,7 @@ class HasilProduksiController extends Controller
         $data->produk_id = $validate['produk_id'];
         $data->proses_id = $validate['proses_id'];
         $data->part = $validate['part'];
+        $data->qty_part = $validate['qty_part'];
         $data->start_time = $validate['start_time'];
         $data->end_time = $validate['end_time'];
         $data->user_id = strval($userId);
@@ -95,6 +101,7 @@ class HasilProduksiController extends Controller
             'produk_id' => 'required',
             'proses_id' => 'required',
             'part' => 'required',
+            'qty_part' => 'required',
             'start_time' => 'required',
             'end_time' => 'required'
         ]);
@@ -112,9 +119,11 @@ class HasilProduksiController extends Controller
             $data->produk_id = $validate['produk_id'];
             $data->proses_id = $validate['proses_id'];
             $data->part = $validate['part'];
+            $data->qty_part = $validate['qty_part'];
             $data->start_time = $validate['start_time'];
             $data->end_time = $validate['end_time'];
             $data->user_id = strval($userId);
+            $data->save();
 
             toastr("Data Success Edit Hasil Produksi", 'success');
             return redirect()->route('hasil-produksi');

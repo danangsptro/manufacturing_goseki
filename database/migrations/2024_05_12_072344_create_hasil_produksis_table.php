@@ -22,6 +22,7 @@ class CreateHasilProduksisTable extends Migration
             $table->bigInteger('proses_id')->nullable()->unsigned();
             $table->bigInteger('user_id')->nullable()->unsigned();
             $table->string('part')->nullable();
+            $table->integer('qty_part')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
             $table->timestamps();
