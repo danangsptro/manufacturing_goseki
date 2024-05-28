@@ -86,5 +86,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete-jadwal-produksi/{id}', [JadwalProduksiController::class, 'destroy'])->name('delete-jadwal-produksi');
         // Laporan
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+        Route::get('/laporan/hasil-produksi', [LaporanController::class, 'hp'])->name('laporan-produksi');
+        Route::get('/laporan/search-hasil-produksi/{type}', [LaporanController::class, 'search'])->name('search-laporan');
+        Route::get('/laporan/cetak-hasil-produksi/{type}', [LaporanController::class, 'printHasilProduksi'])->name('cetak-laporan-produksi');
+        Route::get('/laporan/problem-produksi', [LaporanController::class, 'pp'])->name('laporan-problem-produksi');
     });
 });

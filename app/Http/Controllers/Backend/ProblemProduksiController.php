@@ -39,10 +39,10 @@ class ProblemProduksiController extends Controller
     {
         $validate = $request->validate([
             'tanggal_problem' => 'required',
-            'mesin_produksi_id' => 'required',
-            'operator_id' => 'required',
-            'produk_id' => 'required',
-            'proses_id' => 'required',
+            'mesin_produksi_id' => 'required|integer|min:1',
+            'operator_id' => 'required|integer|min:1',
+            'produk_id' => 'required|integer|min:1',
+            'proses_id' => 'required|integer|min:1',
             'start_time' => 'required',
             'end_time' => 'required',
             'remark' => 'required'
@@ -85,10 +85,10 @@ class ProblemProduksiController extends Controller
     {
         $validate = $request->validate([
             'tanggal_problem' => 'required',
-            'mesin_produksi_id' => 'required',
-            'operator_id' => 'required',
-            'produk_id' => 'required',
-            'proses_id' => 'required',
+            'mesin_produksi_id' => 'required|integer|min:1',
+            'operator_id' => 'required|integer|min:1',
+            'produk_id' => 'required|integer|min:1',
+            'proses_id' => 'required|integer|min:1',
             'start_time' => 'required',
             'end_time' => 'required',
             'remark' => 'required'
