@@ -6,10 +6,10 @@
         <div class="container card-content">
             <br>
             <br>
-            <h4 class="text-center mb-4">Create Mesin</h4>
+            <h4 class="text-center mb-4">Create Hasil Produksi</h4>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Create Mesin</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Create Hasil Produksi</h6>
                 </div>
                 <div class="container-fluid mt-4 mb-4">
                     <form method="POST" action="{{ route('store-hasil-produksi') }}" enctype="multipart/form-data">
