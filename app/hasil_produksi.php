@@ -32,4 +32,9 @@ class hasil_produksi extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function targetJam()
+    {
+        return $this->belongsTo(target_qty::class, 'target_qty_id');
+    }
 }

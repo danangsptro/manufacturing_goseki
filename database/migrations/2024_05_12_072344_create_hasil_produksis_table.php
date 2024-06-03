@@ -21,12 +21,16 @@ class CreateHasilProduksisTable extends Migration
             $table->bigInteger('produk_id')->nullable()->unsigned();
             $table->bigInteger('proses_id')->nullable()->unsigned();
             $table->bigInteger('user_id')->nullable()->unsigned();
-            $table->string('part')->nullable();
-            $table->integer('qty_part')->nullable();
+            $table->bigInteger('target_qty_id')->nullable()->unsigned();
+            $table->integer('qty_target')->nullable();
+            $table->integer('qty_part_ok')->nullable();
+            $table->integer('qty_part_ng')->nullable();
+            $table->string('percent')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
             $table->timestamps();
 
+            $table->foreign('target_qty_id')->references('id')->on('target_qties')->onDelete('cascade');
             $table->foreign('mesin_produksi_id')->references('id')->on('mesin_produksis')->onDelete('cascade');
             $table->foreign('operator_id')->references('id')->on('operators')->onDelete('cascade');
             $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');

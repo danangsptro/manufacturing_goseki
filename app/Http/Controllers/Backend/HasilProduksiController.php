@@ -8,6 +8,8 @@ use App\mesin_produksi;
 use App\operator;
 use App\produk;
 use App\proses;
+use App\target_qty;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,8 +38,13 @@ class HasilProduksiController extends Controller
         $mesin = mesin_produksi::all();
         $produk = produk::all();
         $proses = proses::all();
+        $target = target_qty::all();
 
-        return view('page.hasilProduksi.create', compact('mesin', 'produk', 'operator', 'proses'));
+        // $time = "14:45"; // 2:45 PM
+        // $totalMinutes = convertClockToMinutes($time);
+        // dd( $totalMinutes); // Outputs: 885
+
+        return view('page.hasilProduksi.create', compact('mesin', 'produk', 'operator', 'proses', 'target'));
     }
 
     public function store(Request $request)
@@ -46,12 +53,14 @@ class HasilProduksiController extends Controller
             'tanggal_produksi' => 'required',
             'mesin_produksi_id' => 'required|integer|min:1',
             'operator_id' => 'required|integer|min:1',
+            'target_qty_id' => 'required|integer|min:1',
             'produk_id' => 'required|integer|min:1',
             'proses_id' => 'required|integer|min:1',
-            'part' => 'required',
-            'qty_part' => 'required',
-            'start_time' => 'required',
-            'end_time' => 'required'
+            'qty_target' => 'required|min:1',
+            'qty_part_ok' => 'required|min:1',
+            'qty_part_ng' => 'required|min:1',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i'
         ]);
 
         $data = new hasil_produksi();
@@ -62,11 +71,26 @@ class HasilProduksiController extends Controller
         $data->operator_id = $validate['operator_id'];
         $data->produk_id = $validate['produk_id'];
         $data->proses_id = $validate['proses_id'];
-        $data->part = $validate['part'];
-        $data->qty_part = $validate['qty_part'];
+        $data->target_qty_id = $validate['target_qty_id'];
+        $data->qty_target = $validate['qty_target'];
+        $data->qty_part_ok = $validate['qty_part_ok'];
+        $data->qty_part_ng = $validate['qty_part_ng'];
         $data->start_time = $validate['start_time'];
         $data->end_time = $validate['end_time'];
         $data->user_id = strval($userId);
+
+        /* Forumula */
+        $startTime = Carbon::parse($data->start_time);
+        $endTime = Carbon::parse($data->end_time);
+
+        $durationInMinutes = $endTime->diffInMinutes($startTime);
+        $target = target_qty::find($data->target_qty_id);
+        $durationCalculate = $durationInMinutes / 60;
+        $calculateTargetOrOclock = $target->target * $durationCalculate;
+        $calcule = $data->qty_target / $calculateTargetOrOclock;
+        $result = $calcule * 100;
+
+        $data->percent = round($result);
         $data->save();
 
         if ($data) {
@@ -85,7 +109,8 @@ class HasilProduksiController extends Controller
         $operator = operator::all();
         $produk = produk::all();
         $proses = proses::all();
-        return view('page.hasilProduksi.edit', compact('data', 'mesin', 'operator', 'produk', 'proses'));
+        $target = target_qty::all();
+        return view('page.hasilProduksi.edit', compact('data', 'mesin', 'operator', 'produk', 'proses', 'target'));
     }
 
     public function update(Request $request, $id)
@@ -94,10 +119,12 @@ class HasilProduksiController extends Controller
             'tanggal_produksi' => 'required',
             'mesin_produksi_id' => 'required|integer|min:1',
             'operator_id' => 'required|integer|min:1',
+            'target_qty_id' => 'required|integer|min:1',
             'produk_id' => 'required|integer|min:1',
             'proses_id' => 'required|integer|min:1',
-            'part' => 'required',
-            'qty_part' => 'required',
+            'qty_target' => 'required|min:1',
+            'qty_part_ok' => 'required|min:1',
+            'qty_part_ng' => 'required|min:1',
             'start_time' => 'required',
             'end_time' => 'required'
         ]);
@@ -114,11 +141,26 @@ class HasilProduksiController extends Controller
             $data->operator_id = $validate['operator_id'];
             $data->produk_id = $validate['produk_id'];
             $data->proses_id = $validate['proses_id'];
-            $data->part = $validate['part'];
-            $data->qty_part = $validate['qty_part'];
+            $data->target_qty_id = $validate['target_qty_id'];
+            $data->qty_target = $validate['qty_target'];
+            $data->qty_part_ok = $validate['qty_part_ok'];
+            $data->qty_part_ng = $validate['qty_part_ng'];
             $data->start_time = $validate['start_time'];
             $data->end_time = $validate['end_time'];
             $data->user_id = strval($userId);
+
+            /* Forumula */
+            $startTime = Carbon::parse($data->start_time);
+            $endTime = Carbon::parse($data->end_time);
+
+            $durationInMinutes = $endTime->diffInMinutes($startTime);
+            $target = target_qty::find($data->target_qty_id);
+            $durationCalculate = $durationInMinutes / 60;
+            $calculateTargetOrOclock = $target->target * $durationCalculate;
+            $calcule = $data->qty_target / $calculateTargetOrOclock;
+            $result = $calcule * 100;
+
+            $data->percent = round($result);
             $data->save();
 
             toastr("Data Success Edit Hasil Produksi", 'success');

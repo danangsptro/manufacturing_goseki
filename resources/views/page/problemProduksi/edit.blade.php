@@ -30,8 +30,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Mesin Produksi</label>
-                                    <select class=" form-control  r-0 light" id="mesin_produksi_id"
-                                        name="mesin_produksi_id">
+                                    <select class=" form-control  r-0 light" id="mesin_produksi_id" name="mesin_produksi_id"
+                                        required>
                                         <option readonly>Pilih Mesin Produksi</option>
                                         @foreach ($mesin as $value)
                                             <option value="{{ $value->id }}"
@@ -40,12 +40,15 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('mesin_produksi_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Nama Operator</label>
-                                    <select class=" form-control r-0 light" id="operator_id" name="operator_id">
+                                    <select class=" form-control r-0 light" id="operator_id" name="operator_id" required>
                                         <option readonly>Pilih Nama Operator</option>
                                         @foreach ($operator as $value)
                                             <option value="{{ $value->id }}"
@@ -54,12 +57,15 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('operator_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Nama Produk</label>
-                                    <select class=" form-control r-0 light" id="produk_id" name="produk_id">
+                                    <select class=" form-control r-0 light" id="produk_id" name="produk_id" required>
                                         <option readonly>Pilih Nama Produk</option>
                                         @foreach ($produk as $value)
                                             <option value="{{ $value->id }}"
@@ -68,6 +74,9 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('produk_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -82,6 +91,9 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('proses_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -108,10 +120,10 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-label">Remark</label><br>
-                                    <textarea class="form-control" aria-label="With textarea" name="remark"> {{$data->remark}}</textarea>
+                                    <textarea class="form-control" aria-label="With textarea" name="remark"> {{ $data->remark }}</textarea>
                                     @error('remark')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -129,7 +141,7 @@
                                         onclick="return confirm('Data yang di masukan sudah benar ?')">Submit</button>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="{{ route('hasil-produksi') }}" type="submit"
+                                    <a href="{{ route('problem-produksi') }}" type="submit"
                                         class="btn btn-dark btn-block">Back</a>
 
                                 </div>

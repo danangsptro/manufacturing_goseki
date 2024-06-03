@@ -86,21 +86,35 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="form-label">Part</label><br>
-
-                                    <input type="radio" name="part" value="ok"
-                                        {{ $data->part == 'ok' ? 'checked' : '' }}>
-                                    <label for="customRadioInline1"> OK (PCS)</label>
-                                    <span> | </span>
-                                    <input type="radio" name="part" value="ng"
-                                        {{ $data->part == 'ng' ? 'checked' : '' }}>
-                                    <label for="customRadioInline1"> NG (PCS)</label>
+                                    <label>Target</label>
+                                    <select class=" form-control r-0 light" id="target_qty_id" name="target_qty_id">
+                                        <option readonly>Pilih Target</option>
+                                        @foreach ($target as $value)
+                                            <option value="{{ $value->id }}"
+                                                {{ old('target_qty_id') ?? $data->target_qty_id == $value->id ? 'selected' : '' }}>
+                                                {{ $value->target }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <label>Part QTY</label>
-                                <input type="number" placeholder="Example: 1" value="{{ $data->qty_part }}"
-                                    name="qty_part" class="form-control" required>
+                                <div class="form-group">
+                                    <label class="form-label">Qty Target</label><br>
+                                    <input type="number" placeholder="Example: 1" class="form-control" name="qty_target" value="{{$data->qty_target}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label">Qty Part (OK)</label><br>
+                                    <input type="number" placeholder="Example: 1" class="form-control" name="qty_part_ok" value="{{$data->qty_part_ok}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-label">Qty Part (NG)</label><br>
+                                    <input type="number" placeholder="Example: 1" class="form-control" name="qty_part_ng" value="{{$data->qty_part_ng}}">
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">

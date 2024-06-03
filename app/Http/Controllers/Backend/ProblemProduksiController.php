@@ -45,7 +45,8 @@ class ProblemProduksiController extends Controller
             'proses_id' => 'required|integer|min:1',
             'start_time' => 'required',
             'end_time' => 'required',
-            'remark' => 'required'
+            'remark' => 'required',
+            'img_problem' => 'required|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $data = new problem_produksi();
@@ -60,6 +61,15 @@ class ProblemProduksiController extends Controller
         $data->end_time = $validate['end_time'];
         $data->remark = $validate['remark'];
         $data->user_id = strval($userId);
+        $data->img_problem = $validate['img_problem'];
+
+        if (!$data->img_problem) {
+            $data->img_problem = $data->img_problem;
+            dd($data);
+        } else {
+            $validate['img_problem'] = $request->file('img_problem')->store('asset/problemProduksi', 'public');
+            $data->img_problem = $validate['img_problem'];
+        }
         $data->save();
 
         if ($data) {

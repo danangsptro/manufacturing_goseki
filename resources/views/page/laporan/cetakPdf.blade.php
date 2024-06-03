@@ -45,8 +45,10 @@
                 <th>Nama Produk</th>
                 <th>Proses</th>
                 @if ($type === 'hp')
-                    <th>Part</th>
-                    <th>Part Qty</th>
+                    <th>Qty Target</th>
+                    <th>Percent</th>
+                    <th>Qty Part OK</th>
+                    <th>Qty Part NG</th>
                 @elseif($type === 'pp')
                     <th>Remark</th>
                 @endif
@@ -70,8 +72,10 @@
                     <td>{{ $d->produk->nama_produk }}</td>
                     <td>{{ $d->proses->nama_proses }}</td>
                     @if ($type === 'hp')
-                        <td>{{ $d->part }}</td>
-                        <td>{{ $d->qty_part }}</td>
+                        <td>{{ $d->qty_target }}</td>
+                        <td> {{ $d->percent }} %</td>
+                        <td>{{ $d->qty_part_ok }}</td>
+                        <td>{{ $d->qty_part_ng }}</td>
                     @elseif($type === 'pp')
                         <td>{{ $d->remark }}</td>
                     @endif

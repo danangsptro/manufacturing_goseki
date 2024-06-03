@@ -21,7 +21,8 @@ class CreateProblemProduksisTable extends Migration
             $table->bigInteger('produk_id')->nullable()->unsigned();
             $table->bigInteger('proses_id')->nullable()->unsigned();
             $table->bigInteger('user_id')->nullable()->unsigned();
-            $table->string('remark', 100)->nullable();
+            $table->string('img_problem')->nullable();
+            $table->text('remark')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
             $table->timestamps();

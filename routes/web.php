@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\ProblemProduksiController;
 use App\Http\Controllers\Backend\ProdukController;
 use App\Http\Controllers\Backend\ProsesController;
 use App\Http\Controllers\Backend\RegisterUserController;
+use App\Http\Controllers\Backend\TargetController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -90,5 +91,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/laporan/search-hasil-produksi/{type}', [LaporanController::class, 'search'])->name('search-laporan');
         Route::get('/laporan/cetak-hasil-produksi/{type}', [LaporanController::class, 'printHasilProduksi'])->name('cetak-laporan-produksi');
         Route::get('/laporan/problem-produksi', [LaporanController::class, 'pp'])->name('laporan-problem-produksi');
+        // Target Jam
+        Route::get('/target-jam', [TargetController::class, 'index'])->name('target-jam');
+        Route::get('/create-target-jam', [TargetController::class, 'create'])->name('create-target-jam');
+        Route::post('/store-target-jam', [TargetController::class, 'store'])->name('store-target-jam');
+        Route::get('/edit-target-jam/{id}', [TargetController::class, 'edit'])->name('edit-target-jam');
+        Route::put('/update-target-jam/{id}', [TargetController::class, 'update'])->name('update-target-jam');
+        Route::delete('/delete-target-jam/{id}', [TargetController::class, 'delete'])->name('delete-target-jam');
     });
 });

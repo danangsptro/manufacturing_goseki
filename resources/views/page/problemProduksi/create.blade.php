@@ -35,6 +35,9 @@
                                                 {{ $item->nama_mesin }}</option>
                                         @endforeach
                                     </select>
+                                    @error('mesin_produksi_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -47,6 +50,9 @@
                                                 {{ $item->nama_operator }}</option>
                                         @endforeach
                                     </select>
+                                    @error('operator_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -59,6 +65,9 @@
                                                 {{ $item->nama_produk }}</option>
                                         @endforeach
                                     </select>
+                                    @error('produk_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -71,6 +80,9 @@
                                                 {{ $item->nama_proses }}</option>
                                         @endforeach
                                     </select>
+                                    @error('proses_id')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -95,11 +107,22 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label>Img Problem</label>
+                                    <input type="file" class="form-control" name="img_problem" required>
+                                    <i class="text-danger" style="font-size: 13px">* jpeg,png,jpg, max = 2mb</i>
+                                    @error('img_problem')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
                                     <label class="form-label">Remark</label><br>
                                     <textarea class="form-control" aria-label="With textarea" name="remark"></textarea>
                                     @error('remark')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 

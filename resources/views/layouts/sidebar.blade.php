@@ -45,6 +45,11 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Proses</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('target-jam') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Target</span></a>
+        </li>
     @endif
 
     <hr class="sidebar-divider">

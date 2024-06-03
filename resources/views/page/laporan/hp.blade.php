@@ -57,8 +57,10 @@
                                 <th>Nama Operator</th>
                                 <th>Nama Produk</th>
                                 <th>Proses</th>
-                                <th>Part</th>
-                                <th>Part Qty</th>
+                                <th>Qty Target</th>
+                                <th>Percent</th>
+                                <th>Qty Part OK</th>
+                                <th>Qty Part NG</th>
                                 <th>Waktu</th>
                                 <th>Author</th>
                             </tr>
@@ -67,13 +69,15 @@
                             @foreach ($data as $d)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td> {{ $d->tanggal_produksi }}</td>
+                                    <td>{{ $d->tanggal_produksi }}</td>
                                     <td>{{ $d->mesin->nama_mesin }}</td>
                                     <td>{{ $d->operator->nama_operator }}</td>
                                     <td>{{ $d->produk->nama_produk }}</td>
                                     <td>{{ $d->proses->nama_proses }}</td>
-                                    <td>{{ $d->part }}</td>
-                                    <td>{{ $d->qty_part }}</td>
+                                    <td>{{ $d->qty_target }}</td>
+                                    <td> <span class="badge badge-pill badge-light">{{ $d->percent }} % </span></td>
+                                    <td>{{ $d->qty_part_ok }}</td>
+                                    <td>{{ $d->qty_part_ng }}</td>
                                     <td>{{ $d->start_time }} - {{ $d->end_time }}</td>
                                     <td>
                                         @if ($d->user->user_role === 'Admin')

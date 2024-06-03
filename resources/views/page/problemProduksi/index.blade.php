@@ -23,6 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Img Problem</th>
                                     <th>Tanggal Problem</th>
                                     <th>Mesin Produksi</th>
                                     <th>Nama Operator</th>
@@ -38,6 +39,13 @@
                                 @foreach ($data as $d)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <a href="{{ Storage::url($d->img_problem) }}" target="_blank">
+                                                <img width="70" height="70" border="0" align="center"
+                                                    src="{{ Storage::url($d->img_problem) }}"
+                                                    style="border-radius: 1rem; border:4px solid gray;" />
+                                            </a>
+                                        </td>
                                         <td>{{ $d->tanggal_problem }}</td>
                                         <td>{{ $d->mesin->nama_mesin }}</td>
                                         <td>{{ $d->operator->nama_operator }}</td>
