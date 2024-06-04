@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Target Jam </label>
+                                    <label>Target </label>
                                     <input type="number" class="form-control" placeholder="Example: 12"
                                         name="target" value="{{ $data->target }}" required>
                                     @error('target')

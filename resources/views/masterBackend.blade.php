@@ -40,6 +40,8 @@
     <script src="{{ asset('assets/js/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     @yield('js')
 
 </body>

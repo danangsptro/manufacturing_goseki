@@ -23,7 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Target Jam</th>
+                                    <th>Target</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>

@@ -29,8 +29,8 @@
         <div class="card border-left-dark shadow h-100 py-5">
             <div class="row">
                 <div class="col-lg-4 text-center">
-                    <img src="{{ asset('assets/img/goseki.jpeg') }}" class="img-fluid"
-                        alt="" style="margin-top: 3rem">
+                    <img src="{{ asset('assets/img/goseki.jpeg') }}" class="img-fluid" alt=""
+                        style="margin-top: 3rem">
                 </div>
                 <div class="col-lg-8">
                     <div class="jam">
@@ -72,7 +72,8 @@
                         </strong>
                     </h1>
                     <hr>
-                    <p class="lead text-dark">Selamat datang di <span class="text-primary"><strong>Sistem Data Entry Hasil Produksi</strong></span></p>
+                    <p class="lead text-dark">Selamat datang di <span class="text-primary"><strong>Sistem Data Entry Hasil
+                                Produksi</strong></span></p>
                 </div>
             </div>
 
@@ -154,7 +155,7 @@
                         </div>
                     </div>
                 </div> --}}
-            <div class="col-xl-6 col-md-6 mb-4">
+            {{-- <div class="col-xl-6 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -184,6 +185,17 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div> --}}
+            <div class="col-lg-6">
+                <div class="container card border-left-dark shadow h-100 py-5">
+                    <canvas id="myChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="container card border-left-dark shadow h-100 py-5">
+                    <canvas id="myChart1" width="400" height="200"></canvas>
                 </div>
             </div>
         </div>
@@ -235,5 +247,39 @@
         // 	document.getElementById("menit").innerHTML = waktu.getMinutes();
         // 	document.getElementById("detik").innerHTML = waktu.getSeconds();
         // }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var ctx1 = document.getElementById('myChart1').getContext('2d');
+            var chartData = @json($hasilProduksi);
+            var chartData1 = @json($problemProduksi);
+
+            var myChart = new Chart(ctx, {
+                type: 'bar', // You can change this to 'line', 'pie', 'doughnut', etc.
+                data: chartData,
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            var myChart = new Chart(ctx1, {
+                type: 'bar', // You can change this to 'line', 'pie', 'doughnut', etc.
+                data: chartData1,
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
     </script>
 @endsection
