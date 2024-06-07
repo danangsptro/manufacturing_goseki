@@ -15,10 +15,12 @@ class DashboardController extends Controller
 
         $sales = hasil_produksi::select(
             DB::raw('YEAR(tanggal_produksi) as year'),
-            DB::raw('MONTH(tanggal_produksi) as month'),
+            DB::raw('MONTH(tanggal_produksi) as month', 'desc'),
             DB::raw('SUM(qty_target) as total')
         )
             ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
             ->get();
 
         $labels = [];
@@ -48,6 +50,8 @@ class DashboardController extends Controller
             DB::raw('COUNT(*) as total')
         )
             ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
             ->get();
 
         $labelss = [];
